@@ -1,0 +1,22 @@
+{
+  "expert": {
+    "source": "norm_s0",
+    "transitions": 200000,
+    "episodes": 239,
+    "mean_episode_return": 4446.0,
+    "falls": 95
+  },
+  "medium": {
+    "source": "raw_s1",
+    "transitions": 200000,
+    "episodes": 293,
+    "mean_episode_return": 2267.3,
+    "falls": 225
+  },
+  "reference": {
+    "random_return": 1.9,
+    "expert_return": 5628.9,
+    "eval_seeds": "10000..",
+    "episodes": 20
+  }
+}

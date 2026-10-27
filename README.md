@@ -2,7 +2,8 @@
 
 A walking controller for MuJoCo's Walker2d biped. It is trained with PPO, made robust to changes in its own
 body with domain randomization, and exported as one ONNX file that takes the raw 17-number state and returns
-6 joint torques.
+6 joint torques. Rollouts from the PPO policies then train **behaviour cloning and TD3+BC offline**, in plain
+PyTorch ([`offline/`](offline/)).
 
 <p align="center"><img src="assets/walker.gif" width="540" alt="The exported ONNX controller walking Walker2d-v5, side view"></p>
 <p align="center"><sub>The exported ONNX controller (not the PyTorch policy) on the first held-out episode, real time.</sub></p>
@@ -15,6 +16,7 @@ body with domain randomization, and exported as one ONNX file that takes the raw
 | **Export** | One self-contained 35 KB ONNX file with the normalizer inside. Matches Stable-Baselines3 to **1.6e-6** on 5,802 states and falls on exactly the same episodes |
 | **Latency** | **6.9 µs** per step (p50) on one CPU thread: 9.6× faster than SB3 `predict()`, under 0.1% of the 8 ms control period |
 | **INT8** | Not worth it here: 2.2× smaller (16 KB), but slower (9.2 µs), and it changes the outcome of 6 of 20 episodes |
+| **Offline RL** | From logged rollouts alone, TD3+BC beats behaviour cloning by **17%** on medium data and **47%** on mixed data, where BC falls below the data it copies ([`offline/`](offline/)) |
 
 ## The task
 
@@ -141,8 +143,8 @@ transition from standing.
 
 ```bash
 python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
-./reproduce.sh                  # everything, about 35 min on an M2 MacBook Air
-.venv/bin/python -m pytest -q   # 9 tests: the shipped ONNX file is the trained policy
+./reproduce.sh                  # everything: about 35 min for PPO, plus a few hours for the 30 offline runs
+.venv/bin/python -m pytest -q   # 12 tests: the ONNX file is the trained policy; offline data is labelled right
 ```
 
 Every number in this README comes from `results/` (CSV and JSON), which `reproduce.sh` regenerates. Seeds never
@@ -160,7 +162,8 @@ overlap: training seeds 0-4, evaluation resets 10000+, validation resets 20000+.
 | `export_onnx.py` | Selection, export, open-loop parity, INT8 |
 | `benchmark.py` | Closed-loop comparison and latency |
 | `plot.py`, `render.py` | Figures (light and dark renders), GIF |
-| `tests/` | The ONNX file matches SB3, stays in bounds, takes any batch size |
+| `offline/` | Datasets from the PPO policies, BC and TD3+BC in plain PyTorch, results summary ([README](offline/README.md)) |
+| `tests/` | The ONNX file matches SB3, stays in bounds, takes any batch size; offline data marks only falls as terminal |
 | `models/` | `walker2d_ppo.onnx` (ships), `walker2d_ppo_int8.onnx`, and the source policy and normalizer |
 | `results/` | Every number above |
 

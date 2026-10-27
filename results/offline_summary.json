@@ -1,0 +1,104 @@
+{
+  "medium": {
+    "data_average_return": 2267.3,
+    "data_average_normalized": 40.3,
+    "bc": {
+      "seeds": 5,
+      "mean_return": 2519.6,
+      "std_across_seeds": 150.6,
+      "normalized": 44.7,
+      "per_seed": [
+        2471.1,
+        2559.8,
+        2281.9,
+        2647.4,
+        2637.7
+      ],
+      "falls": "54/100"
+    },
+    "td3bc": {
+      "seeds": 5,
+      "mean_return": 2955.8,
+      "std_across_seeds": 167.1,
+      "normalized": 52.5,
+      "per_seed": [
+        3159.5,
+        2944.5,
+        2769.4,
+        3085.7,
+        2819.8
+      ],
+      "falls": "38/100"
+    }
+  },
+  "medium-expert": {
+    "data_average_return": 3246.1,
+    "data_average_normalized": 57.7,
+    "bc": {
+      "seeds": 5,
+      "mean_return": 2693.3,
+      "std_across_seeds": 59.8,
+      "normalized": 47.8,
+      "per_seed": [
+        2759.3,
+        2601.1,
+        2688.3,
+        2687.3,
+        2730.3
+      ],
+      "falls": "51/100"
+    },
+    "td3bc": {
+      "seeds": 5,
+      "mean_return": 3948.7,
+      "std_across_seeds": 1049.8,
+      "normalized": 70.1,
+      "per_seed": [
+        4479.7,
+        5176.5,
+        3224.3,
+        2548.7,
+        4314.4
+      ],
+      "falls": "63/100"
+    }
+  },
+  "expert": {
+    "data_average_return": 4446.0,
+    "data_average_normalized": 79.0,
+    "bc": {
+      "seeds": 5,
+      "mean_return": 5555.9,
+      "std_across_seeds": 15.7,
+      "normalized": 98.7,
+      "per_seed": [
+        5532.2,
+        5558.9,
+        5550.5,
+        5573.4,
+        5564.7
+      ],
+      "falls": "0/100"
+    },
+    "td3bc": {
+      "seeds": 5,
+      "mean_return": 5643.5,
+      "std_across_seeds": 40.0,
+      "normalized": 100.3,
+      "per_seed": [
+        5688.0,
+        5587.2,
+        5674.6,
+        5626.8,
+        5640.7
+      ],
+      "falls": "1/100"
+    }
+  },
+  "reference": {
+    "random_return": 1.9,
+    "expert_return": 5628.9,
+    "eval_seeds": "10000..",
+    "episodes": 20
+  }
+}
