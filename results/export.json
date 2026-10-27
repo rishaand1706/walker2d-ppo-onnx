@@ -1,0 +1,83 @@
+{
+  "run": "dr_s2",
+  "opset": 20,
+  "fp32_ops": [
+    "Sub",
+    "Div",
+    "Clip",
+    "Gemm",
+    "Tanh",
+    "Gemm",
+    "Tanh",
+    "Gemm",
+    "Max",
+    "Min"
+  ],
+  "int8_ops": [
+    "Sub",
+    "Div",
+    "Clip",
+    "DynamicQuantizeLinear",
+    "Mul",
+    "MatMulInteger",
+    "Cast",
+    "Mul",
+    "Add",
+    "Tanh",
+    "DynamicQuantizeLinear",
+    "Mul",
+    "MatMulInteger",
+    "Cast",
+    "Mul",
+    "Add",
+    "Tanh",
+    "DynamicQuantizeLinear",
+    "Mul",
+    "MatMulInteger",
+    "Cast",
+    "Mul",
+    "Add",
+    "Max",
+    "Min"
+  ],
+  "bytes": {
+    "fp32": 35259,
+    "int8": 15956
+  },
+  "sidecar_files": [],
+  "parity": {
+    "walking": {
+      "n": 3246,
+      "fp32_vs_sb3": {
+        "max_abs": 1.6093254089355469e-06,
+        "mean_abs": 1.4466721154349216e-07
+      },
+      "int8_vs_sb3": {
+        "max_abs": 0.07081496715545654,
+        "mean_abs": 0.0074779256246984005
+      }
+    },
+    "heavy_1.4x": {
+      "n": 556,
+      "fp32_vs_sb3": {
+        "max_abs": 1.5497207641601562e-06,
+        "mean_abs": 1.5017324983546132e-07
+      },
+      "int8_vs_sb3": {
+        "max_abs": 0.061447009444236755,
+        "mean_abs": 0.009391888044774532
+      }
+    },
+    "extreme": {
+      "n": 2000,
+      "fp32_vs_sb3": {
+        "max_abs": 1.5497207641601562e-06,
+        "mean_abs": 1.0209631540192277e-07
+      },
+      "int8_vs_sb3": {
+        "max_abs": 0.11170679330825806,
+        "mean_abs": 0.007916790433228016
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "norm": {
+    "seeds": 5,
+    "mean_return": 3415.7,
+    "std_across_seeds": 1890.1,
+    "per_seed": [
+      5628.9,
+      715.9,
+      2831.1,
+      4721.8,
+      3180.6
+    ],
+    "falls": "40/100",
+    "mean_distance": 21.58
+  },
+  "raw": {
+    "seeds": 5,
+    "mean_return": 2252.7,
+    "std_across_seeds": 1466.2,
+    "per_seed": [
+      3520.3,
+      2409.0,
+      3761.5,
+      1228.3,
+      344.4
+    ],
+    "falls": "54/100",
+    "mean_distance": 12.82
+  },
+  "dr": {
+    "seeds": 5,
+    "mean_return": 3344.4,
+    "std_across_seeds": 1379.8,
+    "per_seed": [
+      2879.6,
+      4915.3,
+      4165.3,
+      1285.3,
+      3476.3
+    ],
+    "falls": "51/100",
+    "mean_distance": 20.99
+  },
+  "protocol": {
+    "env": "Walker2d-v5",
+    "eval_episodes": 20,
+    "eval_seeds": "10000..",
+    "policy": "deterministic (Gaussian mean)",
+    "sweep_episodes": 10
+  }
+}

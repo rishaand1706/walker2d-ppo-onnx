@@ -1,0 +1,12 @@
+gymnasium[mujoco]==1.4.0
+imageio==2.38.1
+matplotlib==3.11.2
+mujoco==3.17.0
+numpy==2.5.4
+onnx==1.23.2
+onnxruntime==1.31.1
+onnxscript==0.7.2
+pytest==9.1.1
+stable-baselines3==2.9.2
+tensorboard==2.21.0
+torch==2.14.1
